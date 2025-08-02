@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="icon" href="./files/logo.png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">   
+    <link rel="stylesheet"
+    href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="contactbody">
+    <nav>
+        <img src="./files/logo.png" class="logo" alt="Logo" title="Food wastage management system">
+        
+        <ul class="navbar">
+            <li>
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="./index.html#fwmanage">What We Do</a>
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('about') }}">About Us</a>
+                <a href="{{ url_for('contact') }}">Contact Us</a>
+            </li>
+        </ul>
+    </nav>
+
+<section class="manager-details">
+    <h2>Mess <span>Details </span></h2>
+    <form id="managerDetailsForm">
+        <label for="managerName">Manager Name:</label>
+        <input type="text" id="managerName" placeholder="Enter Manager Name" required>
+
+        <label for="messNo">Mess No:</label>
+        <input type="text" id="messNo" placeholder="Enter Mess No" required>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" required>
+
+        <label for="vegKg">Veg (in kg):</label>
+        <input type="number" id="vegKg" placeholder="Enter Veg in kg" required>
+
+        <label for="nonVegKg">Non-Veg (in kg):</label>
+        <input type="number" id="nonVegKg" placeholder="Enter Non-Veg in kg" required>
+
+        <label for="wastage">Upload Wastage Image:</label>
+        <input type="file" id="wastage" accept="image/*" required>
+
+        <button type="submit" class="submitbtn">Submit</button>
+    </form>
+
+    <div id="submissionDetails">
+        <h3>Previous Submissions</h3>
+        <div id="detailsList"></div>
+    </div>
+
+    <button onclick="returnHome()">Back to Home</button>
+</section>
+
+<script>
+    // Load previous submissions on page load
+    window.addEventListener('DOMContentLoaded', loadPreviousSubmissions);
+
+    const form = document.getElementById('managerDetailsForm');
+
+    // Save form data to localStorage and display it
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const managerName = document.getElementById('managerName').value;
+        const messNo = document.getElementById('messNo').value;
+        const date = document.getElementById('date').value;
+        const vegKg = document.getElementById('vegKg').value;
+        const nonVegKg = document.getElementById('nonVegKg').value;
+        const wastageFile = document.getElementById('wastage').files[0];
+
+        if (wastageFile) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const submission = {
+                    id: Date.now(),  // Unique identifier for deletion
+                    managerName,
+                    messNo,
+                    date,
+                    vegKg,
+                    nonVegKg,
+                    wastageImage: reader.result
+                };
+
+                saveSubmission(submission);
+                displaySubmission(submission);
+
+                // Clear the form fields after submission
+                form.reset();
+            };
+            reader.readAsDataURL(wastageFile);
+        }
+    });
+
+    // Save each submission to localStorage
+    function saveSubmission(submission) {
+        let submissions = JSON.parse(localStorage.getItem('submissions')) || [];
+        submissions.push(submission);
+        localStorage.setItem('submissions', JSON.stringify(submissions));
+    }
+
+    // Load and display all previous submissions
+    function loadPreviousSubmissions() {
+        const submissions = JSON.parse(localStorage.getItem('submissions'));
+        
+        if (submissions && submissions.length > 0) {
+            submissions.forEach(displaySubmission);
+        } else {
+            document.getElementById('detailsList').innerHTML = '<p>No previous submissions found.</p>';
+        }
+    }
+
+    // Display a submission in the details list with delete button
+    function displaySubmission(submission) {
+        const detailsList = document.getElementById('detailsList');
+        const entry = document.createElement('div');
+        entry.classList.add('submission-entry');
+        entry.setAttribute('data-id', submission.id);
+        entry.innerHTML = `
+            <p><strong>Manager Name:</strong> ${submission.managerName}</p>
+            <p><strong>Mess No:</strong> ${submission.messNo}</p>
+            <p><strong>Date:</strong> ${submission.date}</p>
+            <p><strong>Veg (kg):</strong> ${submission.vegKg}</p>
+            <p><strong>Non-Veg (kg):</strong> ${submission.nonVegKg}</p>
+            <p><strong>Wastage Image:</strong><br><img src="${submission.wastageImage}" alt="Wastage Image" width="100"></p>
+            <button onclick="deleteSubmission(${submission.id})">Delete</button>
+            <hr>
+        `;
+        detailsList.appendChild(entry);
+    }
+
+    // Delete submission from localStorage and update display
+    function deleteSubmission(id) {
+        let submissions = JSON.parse(localStorage.getItem('submissions')) || [];
+        submissions = submissions.filter(submission => submission.id !== id);
+        localStorage.setItem('submissions', JSON.stringify(submissions));
+        
+        // Remove from display
+        const entry = document.querySelector(`.submission-entry[data-id="${id}"]`);
+        if (entry) {
+            entry.remove();
+        }
+    }
+
+    // Return to home
+    function returnHome() {
+        window.location.href = './index.html';
+    }
+</script>
+
+</body>
+</html>
