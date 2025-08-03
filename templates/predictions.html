@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictions</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: rgb(104, 52, 153);
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+        tr:hover {
+            background-color: #d1e7dd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stored Predictions</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Gender</th>
+            <th>Married</th>
+            <th>Dependents</th>
+            <th>Education</th>
+            <th>Self Employed</th>
+            <th>Applicant Income</th>
+            <th>Coapplicant Income</th>
+            <th>Loan Amount</th>
+            <th>Loan Amount Term</th>
+            <th>Credit History</th>
+            <th>Property Area</th>
+            <th>Status</th>
+        </tr>
+        {% for prediction in predictions %}
+        <tr>
+            <td>{{ prediction.id }}</td>
+            <td>{{ prediction.gender }}</td>
+            <td>{{ prediction.married }}</td>
+            <td>{{ prediction.dependents }}</td>
+            <td>{{ prediction.education }}</td>
+            <td>{{ prediction.self_employed }}</td>
+            <td>{{ prediction.applicant_income }}</td>
+            <td>{{ prediction.coapplicant_income }}</td>
+            <td>{{ prediction.loan_amount }}</td>
+            <td>{{ prediction.loan_amount_term }}</td>
+            <td>{{ prediction.credit_history }}</td>
+            <td>{{ prediction.property_area }}</td>
+            <td>{{ prediction.status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='images/n.jpeg') }}">
+    <title>Loan Approval Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('{{ url_for('static', filename='images/b.jpeg') }}');
+            background-size: cover;
+            background-position: center;
+        }
+        .form-container {
+            background-color: rgba(128, 128, 128, 0.3);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        label {
+            color: blue;
+        }
+        input[type="submit"] {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1 class="mb-4">Loan Approval Prediction</h1>
+        <form method="POST" action="{{ url_for('a') }}">
+            <div class="form-group row">
+                <label for="gender" class="col-sm-4 col-form-label">Gender:</label>
+                <div class="col-sm-8">
+                    <select name="gender" id="gender" class="form-control">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="married" class="col-sm-4 col-form-label">Married:</label>
+                <div class="col-sm-8">
+                    <select name="married" id="married" class="form-control">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="dependents" class="col-sm-4 col-form-label">Dependents:</label>
+                <div class="col-sm-8">
+                    <select name="dependents" id="dependents" class="form-control">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3+">3+</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="education" class="col-sm-4 col-form-label">Education:</label>
+                <div class="col-sm-8">
+                    <select name="education" id="education" class="form-control">
+                        <option value="graduate">Graduate</option>
+                        <option value="not_graduate">Not Graduate</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="self_employed" class="col-sm-4 col-form-label">Self Employed:</label>
+                <div class="col-sm-8">
+                    <select name="self_employed" id="self_employed" class="form-control">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="applicant_income" class="col-sm-4 col-form-label">Applicant Income:</label>
+                <div class="col-sm-8">
+                    <input type="number" name="applicant_income" id="applicant_income" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="coapplicant_income" class="col-sm-4 col-form-label">Coapplicant Income:</label>
+                <div class="col-sm-8">
+                    <input type="number" name="coapplicant_income" id="coapplicant_income" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="loan_amount" class="col-sm-4 col-form-label">Loan Amount:</label>
+                <div class="col-sm-8">
+                    <input type="number" name="loan_amount" id="loan_amount" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="loan_amount_term" class="col-sm-4 col-form-label">Loan Amount Term:</label>
+                <div class="col-sm-8">
+                    <input type="number" name="loan_amount_term" id="loan_amount_term" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="credit_history" class="col-sm-4 col-form-label">Credit History:</label>
+                <div class="col-sm-8">
+                    <input type="number" name="credit_history" id="credit_history" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="property_area" class="col-sm-4 col-form-label">Property Area:</label>
+                <div class="col-sm-8">
+                    <select name="property_area" id="property_area" class="form-control">
+                        <option value="urban">Urban</option>
+                        <option value="semiurban">Semiurban</option>
+                        <option value="rural">Rural</option>
+                    </select>
+                </div>
+            </div>
+
+            <input type="submit" value="Predict" class="btn btn-success">
+        </form>
+        <h2>Loan Status: {{ prediction_text }}</h2>
+    </div>
+</body>
+</html>
+

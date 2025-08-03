@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Loan Website</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/i.jpeg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='pro.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    
+    
+    .nav-item{
+        display: inline;
+        margin: 0px;
+        padding:0px;
+
+    }
+    .navbar navbar-expand-sm navbar-light{
+        margin: 0px;
+        padding: 0px;
+        width: 150px;
+        height: 4px;
+    }
+    /* Style the dropdown toggle */
+.nav-link.dropdown-toggle {
+    color: rgb(156, 14, 109);
+    
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+.nav-link.dropdown-toggle:hover {
+    color: rgb(100, 10, 75); /* Darker color on hover */
+}
+
+/* Style the dropdown menu */
+.dropdown-menu {
+    background-color: rgb(245, 245, 245); /* Light grey background */
+    border: 1px solid rgb(156, 14, 109); /* Border color same as text color */
+    border-radius: 5px;
+}
+
+/* Style the dropdown items */
+.dropdown-item {
+    color: rgb(156, 14, 109);
+    font-family: 'Arial', sans-serif; /* Custom font */
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: rgb(156, 14, 109); /* Background color on hover */
+    color: white; /* Text color on hover */
+}
+
+/* Add a slight shadow effect */
+.dropdown-menu {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+    
+    
+    
+</style>
+</head>
+<body>
+    <section class="banner">
+        
+            <nav class="navbar navbar-expand-sm navbar-dark"  style= "background-color: rgba(224, 125, 25, 0.582);">
+                <a class="navbar-brand" href="{{ url_for('project') }}" style="color: rgb(156, 14, 109);"><i class="fas fa-home"></i> Home</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about" style="color: rgb(156, 14, 109);">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#why" style="color: rgb(156, 14, 109);">Why choose us?</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="loansDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: rgb(156, 14, 109);"> Loans
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="loansDropdown">
+                                <a class="dropdown-item" href="{{ url_for('car') }}">Car Loans</a>
+                                <a class="dropdown-item" href="{{ url_for('personal') }}">Personal Loans</a>
+                                <a class="dropdown-item" href="{{ url_for('business') }}">Business Loans</a>
+                                <a class="dropdown-item" href="{{ url_for('homeloan') }}">Home Loans</a>
+                            </div>
+                            
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('a') }}" style="color:  rgb(156, 14, 109);  "> Prediction</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link btn" href="{{ url_for('lgs') }}" style="color: rgb(156, 14, 109); display: flex; align-items: center; margin-left: 400px; font-size:20px; ">
+                                <i class="fas fa-sign-in-alt"></i><span>Login</span>
+                              </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn" href="{{ url_for('s') }}" style="color: rgb(156, 14, 109); display: flex; align-items: center; font-size:18px; margin-left: 40px;">
+                                <i class="fas fa-user-plus"></i><span style="margin-right: -4px;">Sign Up</span>
+                              </a>
+                              
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </section>
+
+    <div id="about">
+    <h1>About Us</h1>
+    <div class="section">
+        <p>Welcome to Our Loan Prediction System! We are a dynamic team of professionals committed to transforming the way financial institutions assess loan applications. Our goal is to leverage advanced technologies and methodologies to create predictive analytics tools that enhance decision-making processes in the lending landscape.</p>
+    </div>
+
+    <h2>Our Mission</h2>
+    <div class="section">
+        <p>Our mission is to revolutionize the loan approval process by developing a reliable and transparent prediction system. We aim to minimize financial risks for lenders while promoting financial inclusion for all creditworthy individuals, ensuring equitable access to credit.</p>
+    </div>
+
+    <h2>What We Do</h2>
+    <div class="section">
+        <p>Our Loan Prediction System employs sophisticated machine learning algorithms to evaluate the creditworthiness of applicants. This involves analyzing a comprehensive set of factors, such as:</p>
+        <ul>
+            <li><strong>Credit History:</strong> The applicant’s past borrowing behavior and repayment patterns.</li>
+            <li><strong>Income Level:</strong> Stability and adequacy of an applicant’s income.</li>
+            <li><strong>Employment Status:</strong> Job stability and employment history.</li>
+            <li><strong>Debt-to-Income Ratio:</strong> Proportion of income toward existing debt payments.</li>
+            <li><strong>Demographic Information:</strong> Age, education level, and geographic location.</li>
+        </ul>
+        <p>By synthesizing these factors, our system can accurately predict the likelihood of loan default, enabling financial institutions to make data-driven decisions quickly and effectively.</p>
+    </div>
+
+    <h2>Key Features</h2>
+    <div class="section key-features">
+        <div class="featur">
+            <h3>High Accuracy</h3>
+            <p>Our models are built on extensive historical data, ensuring high reliability and precision in predictions.</p>
+        </div>
+        <div class="featur">
+            <h3>Transparency</h3>
+            <p>We emphasize explainable AI, ensuring that our prediction processes are understandable and justifiable.</p>
+        </div>
+        <div class="featur">
+            <h3>Scalability</h3>
+            <p>Our system can handle large volumes of loan applications, suitable for institutions of all sizes.</p>
+        </div>
+        <div class="featur">
+            <h3>Customizable Models</h3>
+            <p>We offer tailored prediction models that adapt to the specific needs of lending institutions.</p>
+        </div>
+    </div>
+
+    <h2>Security and Compliance</h2>
+    <div class="section">
+        <p>Data Security: Protecting sensitive information is paramount. We adhere to the highest standards of data protection, implementing robust security measures.</p>
+        <p>Regulatory Compliance: Our systems meet or exceed industry standards and regulatory requirements to ensure operational integrity.</p>
+    </div>
+
+    <h2>User-Friendly Interface</h2>
+    <div class="section">
+        <p>Our platform features an intuitive design, making it easy for loan officers to navigate and obtain instant predictions.</p>
+    </div>
+
+    <h2>How It Works</h2>
+    <div class="section">
+        <ul>
+            <li><strong>Data Collection:</strong> We gather and process essential applicant data.</li>
+            <li><strong>Preprocessing:</strong> Data is cleaned and preprocessed for optimal analysis.</li>
+            <li><strong>Model Training:</strong> Our models are trained on historical loan data.</li>
+            <li><strong>Prediction:</strong> Each application is assessed to predict the likelihood of default.</li>
+            <li><strong>Feedback Loop:</strong> The system continuously evolves with new data.</li>
+        </ul>
+    </div>
+
+    <h2>Commitment to Innovation</h2>
+    <div class="section">
+        <p>We are dedicated to continuous improvement and innovation in the fintech space, enhancing our prediction models to provide greater value to our clients.</p>
+   
+        <div class="why-choose-us">
+            <div id="why">
+                <h2>Why Choose Us for Loan Prediction</h2>
+                <div class="features">
+                    <div class="feature">
+                        <h3>Expertise in Predictive Analytics</h3>
+                        <p>Our team of data scientists and analysts are experts in predictive analytics, ensuring accurate and reliable loan predictions.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Accurate Predictions</h3>
+                        <p>We use advanced algorithms and data models to provide highly accurate loan predictions, minimizing risk and maximizing returns.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Customized Solutions</h3>
+                        <p>Our solutions are tailored to meet your specific needs, providing customized loan prediction models for better decision-making.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Proven Track Record</h3>
+                        <p>We have a proven track record of success, with numerous satisfied clients and successful loan prediction projects.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Advanced Technology</h3>
+                        <p>We leverage cutting-edge technology and the latest advancements in machine learning to deliver top-notch loan predictions.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>User-Friendly Interface</h3>
+                        <p>Our platform features an intuitive and user-friendly interface, making it easy for you to navigate and use our services.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>24/7 Support</h3>
+                        <p>We provide round-the-clock support and assistance to ensure your needs are always met promptly and efficiently.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('.carousel').carousel();
+        });
+    </script>
+</body>
+</html>

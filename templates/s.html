@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('{{ url_for('static', filename='images/dj.jpg') }}');
+            background-repeat: no-repeat;
+        }
+        .container {
+            background-color: rgba(138, 209, 194, 0.4);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            border-radius: 15px;
+            box-shadow: inset 3px 5px 15px rgba(255, 0, 255, 0.4);
+            width: 500px;
+            padding: 30px 50px 50px 50px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .container:hover {
+            transform: scale(1.05);
+        }
+        header {
+            padding: 10px;
+            text-align: center;
+            font-size: 25px;
+            color: white;
+            font-weight: 500;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 30px;
+            background-color: rgba(255, 0, 255, 0.8);
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: rgba(128, 255, 0, 0.9);
+        }
+        .sign {
+            display: block;
+            margin: 20px auto;
+        }
+        table {
+            width: 100%;
+        }
+        td {
+            padding: 10px 0;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            text-align: center;
+        }
+        h5 {
+            text-align: center;
+            font-size: 20px;
+        }
+        a.button {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            font-size: 15px;
+            color: rgba(255, 0, 255);
+            margin-top: 10px;
+            transition: color 0.3s ease;
+        }
+        a.button:hover {
+            color: rgba(128, 0, 128);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>Create Your Account</header>
+        <form onsubmit="return create_account()" action="{{ url_for('s') }}" , method="POST">
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" placeholder="Enter your name" id="n1"></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="text" placeholder="Enter your email id" id="e1"></td>
+                </tr>
+                <tr>
+                    <td>Set Password</td>
+                    <td><input type="password" placeholder="Set a password" id="p1"></td>
+                </tr>
+                <tr>
+                    <td>Confirm Password</td>
+                    <td><input type="password" placeholder="Confirm your password" id="p2"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="submit" class="sign">Sign up</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <h5>Already have an account?</h5>
+        <a href="{{url_for('lgs')}}" class="button">Go to Login Page</a>
+    </div>
+
+    <script type="text/javascript">
+        function create_account() {
+            var n = document.getElementById("n1").value;
+            var e = document.getElementById("e1").value;
+            var p = document.getElementById("p1").value;
+            var cp = document.getElementById("p2").value;
+
+            var letters = /^[A-Za-z]+$/;
+            var email_val = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+            if (n == '' || e == '' || p == '' || cp == '') {
+                alert("Enter each detail correctly");
+                return false;
+            } else if (!letters.test(n)) {
+                alert('Name is incorrect, must contain alphabets only');
+                return false;
+            } else if (!email_val.test(e)) {
+                alert('Invalid email format, please enter a valid email id');
+                return false;
+            } else if (p != cp) {
+                alert("Passwords do not match");
+                return false;
+            } else if (p.length > 12) {
+                alert("Password maximum length is 12");
+                return false;
+            } else if (p.length < 6) {
+                alert("Password minimum length is 6");
+                return false;
+            } else {
+                alert("Your account has been created successfully... Redirecting to Home Page");
+                window.location.href = "{{ url_for('project') }}";
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

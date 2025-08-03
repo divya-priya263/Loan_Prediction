@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Loans</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='pro.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 15000px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(196, 104, 104, 0.849);
+            border-radius: 8px;
+            
+        }
+        h1, h2, h3 {
+            color: #8f273d;
+        }
+        p, ul, ol {
+            color: #474141;
+        }
+       
+        .carousel {
+            max-width: 100%;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .carousel-item {
+            flex: 0 0 auto;
+            margin-right: 10px;
+            max-width: 100%;
+            transition: transform 0.5s ease;
+        }
+        .expandable {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            max-height: 0;
+        }
+        .expandable.open {
+            max-height: 500px; /* Adjust as needed */
+        }
+        .expandable-content {
+            padding: 20px;
+        }
+        .expandable-button {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .expandable-button:hover {
+            background-color: #0056b3;
+        }
+        .loan-image {
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Personal Loans</h1>
+        
+
+        <p>A personal loan allows you to borrow a lump sum of money to pay for a variety of expenses and then repay those funds in regular payments, or installments, over time. For example, you might use a personal loan to cover moving expenses, debt consolidation, medical bills, wedding expenses, home renovations or repairs, funeral costs, vacation costs, or unexpected expenses.</p>
+        
+        <p>Personal loans are different from other installment loans—such as student loans, car loans, and mortgage loans—that are used to fund specific expenses like education, vehicles, or homes.</p>
+        
+        <p>Generally, you can use a personal loan for any expense. But some personal loan lenders restrict how you can use a personal loan. For example, you may not be able to get a personal loan to pay for college tuition, fees, or other expenses.</p>
+        
+        <p>A personal loan is also different from a personal line of credit. A line of credit is not a lump sum amount but instead works like a credit card. You have a set credit line that you can spend money against. As you spend, your available credit is reduced. You can then increase available credit by making a payment toward your credit line.</p>
+        
+        <p>With a personal loan, there’s typically a fixed end date by which the loan will be paid off. A personal line of credit, on the other hand, may remain open and available to you indefinitely as long as your account remains in good standing with your lender.</p>
+        
+        <p>The Internal Revenue Service (IRS) does not consider a personal loan as part of the borrower's income. The money received on the loan is not taxed. However, if the lender forgives the loan, it is considered a canceled debt, and that amount can be taxed.</p>
+        
+        <h2>Types of Personal Loans</h2>
+        <p>Personal loans may be secured or unsecured. A secured personal loan requires some type of collateral as a condition of borrowing. For instance, you may secure a personal loan with cash assets, such as a savings account or certificate of deposit (CD), or with a physical asset, such as your car or boat. If you default on the loan, the lender could keep your collateral to satisfy the debt.</p>
+        
+        <p>An unsecured personal loan requires no collateral to borrow money. Banks, credit unions, and online lenders can offer both secured and unsecured personal loans to qualified borrowers. Banks generally consider the latter to be riskier than the former because there’s no collateral to collect. That can mean paying a higher interest rate for a personal loan.</p>
+        
+        <h2>How to Get Approved for a Personal Loan</h2>
+        <p>To get a personal loan, you need to apply to a lender. This can be a bank, credit union, or online personal loan lender. Generally, you would first complete an application. The lender reviews it and decides whether to approve or deny it. If approved, you’ll be given the loan terms, which you can accept or reject. If you agree to them, the next step is finalizing your loan paperwork.</p>
+        
+        <p>When that’s done, the lender will fund the loan, which means paying you the proceeds. Depending on the lender, these may arrive through a direct deposit into your bank account or a check. After the loan is funded, you can use the money as you see fit. You then have to begin repaying the loan according to the terms established in your loan agreement.</p>
+        
+        <p>Defaulting on a personal loan could cause significant damage to your credit score. You could also lose your collateral with a secured loan or risk being sued by your lender to collect the debt.</p>
+        
+        <h2>Example of a Personal Loan</h2>
+        <p>When considering a personal loan, it’s helpful to understand how much it may cost. The annual percentage rate (APR) on a personal loan represents the annualized cost of repaying the loan based on the interest rate and fees. The APR and loan term can determine how much you pay in interest total over the life of the loan.</p>
+        
+        <p>For example, assume you get a $10,000 personal loan with an APR of 7.5%. The loan has a repayment term of 24 months. Using those terms, your monthly payment would be $450 and the total interest paid over the life of the loan would be $799.90.</p>
+        
+        <p>Now assume you borrow the same amount but with different loan terms. Instead of a two-year term, you have three years to repay the loan, and your interest rate is 6% instead of 7.5%. Using those terms, your monthly payment would drop to $304, but your total interest paid would increase to $951.90.</p>
+        
+        <p>Comparing the numbers this way is important if you want to get the lowest monthly payment possible or pay the least amount of interest for a personal loan. Using a simple online personal loan calculator can help you determine what kind of payment amount and interest rate are the best fit for your budget.</p>
+        
+        <p>Though some lenders charge no fees for personal loans, others may levy a credit check fee, a loan origination fee, or—if you decide to pay off the loan early—a prepayment penalty. Paying late could trigger a late payment fee.</p>
+        
+        <h2>Where to Find Personal Loans</h2>
+        <p>The first place to look for personal loans may be your current bank or credit union. Your personal banker can advise you on what types of personal loans may be available and the borrowing options for which you’re most likely to qualify.</p>
+        
+        <p>Personal loans can also be found online. Numerous lenders offer personal loans online. You can apply electronically, get a decision in minutes and, in some cases, get funding in as little as 24 to 48 hours after loan approval.</p>
+        
+        <p>When comparing personal loans online or off, pay close attention to the details. Specifically, consider the following:</p>
+        <ul>
+            <li>Interest rate</li>
+            <li>Fees</li>
+            <li>Repayment terms</li>
+            <li>Borrowing limits (minimum and maximum)</li>
+            <li>Collateral requirements</li>
+        </ul>
+        
+        <p>It’s also helpful to check the minimum requirements to qualify for a personal loan. Lenders can have different requirements when it comes to the credit score, income, and debt-to-income ratio that are acceptable to be approved for a personal loan. This can help you narrow down the loans that may best fit your credit and financial profile.</p>
+        
+        <h2>What Is the Difference Between a Cash Advance Loan and a Personal Loan?</h2>
+        <p>A cash advance loan is a loan that is designed to provide funds for a short time, typically for emergencies. It usually comes with a higher interest rate and a fee. Personal loans generally have longer terms and lower interest rates than cash advance loans.</p>
+        
+        <h2>Do Personal Loans Have Fees?</h2>
+        <p>A personal loan can include fees such as origination fees, which are added to the total cost of the loan. Other fees might include documentation fees or late fees. Each lender has different terms for their fees, so make sure you understand the fees your lender charges.</p>
+        
+        <h2>The Bottom Line</h2>
+        <p>The wide variety of personal loans currently available makes it almost a guarantee that there's an offer out there suited to your financial needs. However, it's easy to get overwhelmed by the sheer number of options on the market, which may lead you to inadvertently missing out on the most favorable interest rates and loan terms you might qualify for. For this reason, it's crucial to carefully research and compare different lenders and loan products. By taking the time to find the best possible loan, you can keep your monthly payment low while also reducing your risk of default.</p>
+        
+        <!-- Inserted Section Starts Here -->
+        <h2>Where to Apply for Personal Loans</h2>
+        <p>When seeking a personal loan, it’s wise to explore multiple avenues to find the best terms and rates. Banks, credit unions, and online lenders each offer different advantages:</p>
+        
+        <h3>Banks:</h3>
+        <ul>
+            <li>Access to in-person services and advice.</li>
+            <li>Potential for relationship-based discounts.</li>
+            <li>Stable and regulated lending environment.</li>
+        </ul>
+        
+        <h3>Credit Unions:</h3>
+        <ul>
+            <li>Lower interest rates and fees due to nonprofit status.</li>
+            <li>Community-oriented and member-focused services.</li>
+            <li>Flexible terms and personalized customer service.</li>
+        </ul>
+        
+        <h3>Online Lenders:</h3>
+        <ul>
+            <li>Quick application process and approval.</li>
+            <li>Competitive rates and transparent fee structures.</li>
+            <li>Convenience of 24/7 accessibility and digital management.</li>
+        </ul>
+        
+        <p>Before applying, compare offers, read customer reviews, and verify lender credibility to ensure a positive borrowing experience.</p>
+        <!-- Inserted Section Ends Here -->
+        
+        <h2 class="expandable-button" onclick="toggleExpandable('comparison')">Personal Loan Comparison</h2>
+        <div id="comparison" class="expandable">
+            <div class="expandable-content">
+                <table>
+                    <tr>
+                        <th>Features</th>
+                        <th>Bank A</th>
+                        <th>Credit Union B</th>
+                        <th>Online Lender C</th>
+                    </tr>
+                    <tr>
+                        <td>Interest Rate</td>
+                        <td>Starting from 5%</td>
+                        <td>Starting from 4.5%</td>
+                        <td>Starting from 6%</td>
+                    </tr>
+                    <tr>
+                        <td>Loan Amount</td>
+                        <td>Up to $50,000</td>
+                        <td>Up to $40,000</td>
+                        <td>Up to $60,000</td>
+                    </tr>
+                    <tr>
+                        <td>Repayment Terms</td>
+                        <td>1-5 years</td>
+                        <td>1-7 years</td>
+                        <td>1-6 years</td>
+                    </tr>
+                    <tr>
+                        <td>Fees</td>
+                        <td>No origination fee</td>
+                        <td>$50 application fee</td>
+                        <td>No prepayment penalty</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleExpandable(id) {
+            const element = document.getElementById(id);
+            element.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

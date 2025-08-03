@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='images/b.jpeg') }}">
+    <title>Loan Approval Prediction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200vh;
+            margin-top: 20px;
+            margin-bottom: 80px;
+            font-family: Arial, sans-serif;
+            background-image: url('{{ url_for('static', filename='images/jd.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            height: 990px;
+        }
+        .form-container {
+            
+            padding: 70px;
+           
+            box-shadow: 0 4px 20px rgba(234, 11, 241, 0.5); /* Enhanced box shadow */
+            text-align: center;  
+            width: 10px /* Fixed width issue */
+            margin-top: 50px;
+            height:950px;
+            background-color: rgba(138, 209, 194, 0.4);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            border-radius: 15px;
+
+
+        }label {
+            display: black;
+        
+            color: blue;
+        }        
+        input[type="submit"] {
+            background-color: green; /* Set button color */
+            color: white; /* Set text color */
+       .icon {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Loan Approval Prediction</h1>
+        <form method="POST" action="{{ url_for('a') }}">
+            <div class="form-group row align-items-center">
+                <label for="gender" class="col-sm-4 col-form-label">
+                    <i class="fas fa-venus-mars icon"></i> Gender:
+                </label>
+                <div class="col-sm-8">
+                    <select name="gender" id="gender" class="form-control">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label for="married" class="col-sm-4 col-form-label">
+                    <i class="fas fa-ring icon"></i> Married:
+                </label>
+                <div class="col-sm-8">
+                    <select name="married" id="married" class="form-control">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label for="dependents" class="col-sm-4 col-form-label">
+                    <i class="fas fa-child icon"></i> Dependents:
+                </label>
+                <div class="col-sm-8">
+                    <select name="dependents" id="dependents" class="form-control">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3+">3+</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label for="education" class="col-sm-4 col-form-label">
+                    <i class="fas fa-graduation-cap icon"></i> Education:
+                </label>
+                <div class="col-sm-8">
+                    <select name="education" id="education" class="form-control">
+                        <option value="graduate">Graduate</option>
+                        <option value="not_graduate">Not Graduate</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label for="self_employed" class="col-sm-4 col-form-label">
+                    <i class="fas fa-briefcase icon"></i> Self Employed:
+                </label>
+                <div class="col-sm-8">
+                    <select name="self_employed" id="self_employed" class="form-control">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label for="applicant_income" class="col-sm-4 col-form-label">
+                    <i class="fas fa-dollar-sign icon"></i> Applicant Income:
+                </label>
+                <div class="col-sm-8">
+                    <input type="number" name="applicant_income" id="applicant_income" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label for="coapplicant_income" class="col-sm-4 col-form-label">
+                    <i class="fas fa-hand-holding-usd icon"></i> Coapplicant Income:
+                </label>
+                <div class="col-sm-8">
+                    <input type="number" name="coapplicant_income" id="coapplicant_income" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label for="loan_amount" class="col-sm-4 col-form-label">
+                    <i class="fas fa-money-bill icon"></i> Loan Amount:
+                </label>
+                <div class="col-sm-8">
+                    <input type="number" name="loan_amount" id="loan_amount" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label for="loan_amount_term" class="col-sm-4 col-form-label">
+                    <i class="fas fa-calendar-alt icon"></i> Loan Amount Term:
+                </label>
+                <div class="col-sm-8">
+                    <input type="number" name="loan_amount_term" id="loan_amount_term" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label for="credit_history" class="col-sm-4 col-form-label">
+                    <i class="fas fa-history icon"></i> Credit History:
+                </label>
+                <div class="col-sm-8">
+                    <input type="number" name="credit_history" id="credit_history" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row align-items-center">
+                <label for="property_area" class="col-sm-4 col-form-label">
+                    <i class="fas fa-home icon"></i> Property Area:
+                </label>
+                <div class="col-sm-8">
+                    <select name="property_area" id="property_area" class="form-control">
+                        <option value="urban">Urban</option>
+                        <option value="semiurban">Semiurban</option>
+                        <option value="rural">Rural</option>
+                    </select>
+                </div>
+            </div>
+
+            <input type="submit" value="Predict" class="btn btn-primary">
+        </form>
+        <a href="{{ url_for('view_predictions') }}">view predictions</a>
+
+
+        <h2>Loan Status: {{ prediction_text }}</h2>
+    </div>
+</body>
+</html>
+

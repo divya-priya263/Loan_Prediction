@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Loans</title>
+    <!-- Link to your CSS file if needed -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='pro.css') }}">
+    <!-- Link to FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Inline CSS for styling specific to this page -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1500px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        h1, h2, h3 {
+            color: #174849;
+        }
+        p, ul, ol {
+            color: hwb(0 0% 100% / 0.89);
+        }
+        .emi-calculator {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        .emi-calculator h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .emi-calculator label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        .emi-calculator input[type="number"], .emi-calculator select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .emi-calculator button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #336dac;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .emi-calculator button:hover {
+            background-color: #0056b3;
+        }
+        .emi-calculator .result {
+            margin-top: 10px;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Style for expandable sections */
+        .expandable {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            max-height: 0;
+        }
+        .expandable.open {
+            max-height: 500px; /* Adjust as needed */
+        }
+        .expandable-content {
+            padding: 20px;
+        }
+        .expandable-button {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .expandable-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Business Loans</h1>
+        
+       
+        
+        <p>The business loan meaning is a loan product offered to business owners who have a running company but require external funds for operations. The investment covers expenses such as employee salaries, rent, buying equipment, or expanding the business to other cities.</p>
+        
+        <h2>Types of Business Loans</h2>
+        <ul>
+            <li><strong>Term Business Loans:</strong> Straightforward short-term loans with a tenure of 1-5 years, based on business credit history.</li>
+            <li><strong>Working Capital Loans:</strong> Short-term loans to fulfill short-term liabilities like rent or salaries.</li>
+            <li><strong>Commercial Business Loans:</strong> Immediate capital up to Rs 50 lakh for businesses with high turnover.</li>
+            <li><strong>Startup Loans:</strong> Loans for startups without collateral, offering repayment flexibility.</li>
+            <li><strong>Equipment Financing:</strong> Capital for buying equipment or machinery.</li>
+        </ul>
+        
+        <h2>Eligibility Criteria</h2>
+        <ul>
+            <li>Established enterprises operating for more than six months.</li>
+            <li>Minimum turnover of Rs 90,000 in the last three months.</li>
+            <li>Business not blacklisted or in negative location lists.</li>
+            <li>Charitable organizations, NGOs, and trusts are ineligible.</li>
+        </ul>
+        
+        <h2>Documents Required</h2>
+        <ul>
+            <li>KYC documents, PAN card, and Aadhar card.</li>
+            <li>Last 6-12 months' bank statements.</li>
+            <li>Proof of business registration, GST registration.</li>
+            <li>Additional documents for credit assessment.</li>
+        </ul>
+        
+        <h2>How to Apply for Business Loans</h2>
+        <ol>
+            <li>Visit the lender's website and navigate to the business loan section.</li>
+            <li>Click “Apply Now” and fill out the application form.</li>
+            <li>Submit all relevant KYC documents.</li>
+            <li>Click the “Submit” button to complete the application.</li>
+            <li>Loan approval within 30 minutes; disbursal within 48 hours.</li>
+        </ol>
+        
+        <h2>About IIFL Finance Business Loans</h2>
+        <p>IIFL Finance offers customised business loans up to Rs 30 lakh with quick disbursal and no collateral requirement. The application process is entirely online with minimal paperwork, ensuring attractive and affordable interest rates.</p>
+        
+        <h2>Business Loan EMI Calculator</h2>
+        <div class="emi-calculator">
+            <h3>Calculate your EMI</h3>
+            <form id="emi-form">
+                <label for="loan-amount">Loan Amount (₹)</label>
+                <input type="number" id="loan-amount" name="loan-amount" required>
+                
+                <label for="loan-tenure">Time to Repay (Tenure) in Years</label>
+                <input type="number" id="loan-tenure" name="loan-tenure" required>
+                
+                <label for="interest-rate">Rate of Interest (%)</label>
+                <input type="number" id="interest-rate" name="interest-rate" step="0.01" required>
+                
+                <button type="submit">Calculate EMI</button>
+            </form>
+            
+            <div class="result" id="emi-result"></div>
+        </div>
+        
+        
+    </div>
+
+    <script>
+        function toggleExpandable(id) {
+            const element = document.getElementById(id);
+            element.classList.toggle('open');
+        }
+        
+        document.getElementById('emi-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let loanAmount = parseFloat(document.getElementById('loan-amount').value);
+            let loanTenure = parseInt(document.getElementById('loan-tenure').value);
+            let interestRate = parseFloat(document.getElementById('interest-rate').value);
+            
+            let monthlyInterest = (interestRate / 100) / 12;
+            let months = loanTenure * 12;
+            
+            let emi = (loanAmount * monthlyInterest * Math.pow(1 + monthlyInterest, months)) / (Math.pow(1 + monthlyInterest, months) - 1);
+            let totalPayment = emi * months;
+            let interestPayable = totalPayment - loanAmount;
+            
+            document.getElementById('emi-result').innerHTML = `
+                <p><strong>Your EMI Amount:</strong> ₹ ${emi.toFixed(2)}</p>
+                <p><strong>Total Payment:</strong> ₹ ${totalPayment.toFixed(2)}</p>
+                <p><strong>Interest Payable:</strong> ₹ ${interestPayable.toFixed(2)}</p>
+            `;
+        });
+    </script>
+</body>
+</html>
