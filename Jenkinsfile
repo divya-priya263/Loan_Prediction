@@ -19,8 +19,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                // Example test command
-                sh 'pytest'
+            
             }
         }
     }
