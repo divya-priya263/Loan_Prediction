@@ -29,8 +29,8 @@ pipeline {
         }
         stage {
             steps ('versions') {
-                sh " python3 --version
-                     pip3 --version "
+                sh """ python3 --version
+                     pip3 --version """
             }
         }
             
