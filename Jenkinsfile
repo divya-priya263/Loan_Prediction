@@ -26,11 +26,7 @@ pipeline {
             
             }
         }
-        stage('installing python') {
-            steps {
-                sh 'apt-get install -y python3 python3-pip'
-            }
-        }
+    
         stage('versions') {
             steps {
                 sh """ 
