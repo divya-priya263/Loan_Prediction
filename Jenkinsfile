@@ -22,5 +22,8 @@ pipeline {
             
             }
         }
+        stage('Running the flask app") {
+              steps {
+                  sh 'nohup python apps.py &'
     }
 }
