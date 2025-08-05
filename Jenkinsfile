@@ -27,8 +27,8 @@ pipeline {
                 sh 'sudo apt install -y python3 python3-pip'
             }
         }
-        stage {
-            steps ('versions') {
+        stage  ('versions'){
+            steps {
                 sh """ python3 --version
                      pip3 --version """
             }
