@@ -47,7 +47,7 @@ pipeline {
                   sh '''
                   docker stop flask-app || true
                   docker rm flask-app || true
-                  docker run -d -p 5000:5000 --name flask-app devops-demo:latest
+                  docker run -d -p 50000:50000 --name flask-app devops-demo:latest
                   '''
             }
       }
