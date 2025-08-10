@@ -42,6 +42,14 @@ pipeline {
                   sh 'nohup python apps.py &'
             }
         }
-    
+        stage('Run Flask App in Docker') {
+              steps {
+                  sh '''
+                  docker stop flask-app || true
+                  docker rm flask-app || true
+                  docker run -d -p 5000:5000 --name flask-app devops-demo:latest
+                  '''
+            }
+      }
     }
 }
