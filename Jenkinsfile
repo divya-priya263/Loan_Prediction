@@ -16,42 +16,57 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the project...'
-             
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running tests...'
-            
             }
         }
-    
-        stage('versions') {
+
+        stage('Versions') {
             steps {
-                sh """ 
+                sh '''
                     python3 --version
                     pip3 --version 
-                """
+                '''
             }
         }
-            
-        stage('Running the flask app') {
-              steps {
 
-                  sh ' pip install --user flask==3.1.0'
-                  sh ' pip install --user Flask-SQLAlchemy==3.1.1'
-                  sh 'nohup python apps.py &'
+        stage('Setup Python and Install Flask') {
+            steps {
+                sh '''
+               
+                    # Create virtual environment in workspace
+                    python3 -m venv venv
+
+                    # Activate venv and install required packages
+                    . venv/bin/activate
+                    pip install flask==3.1.0 Flask-SQLAlchemy==3.1.1
+                '''
             }
         }
-        stage('Run Flask App in Docker') {
-              steps {
-                  sh '''
-                  docker stop flask-app || true
-                  docker rm flask-app || true
-                  docker run -d -p 50000:50000 --name flask-app devops-demo:latest
-                  '''
+
+        stage('Run Flask App') {
+            steps {
+                sh '''
+                    # Activate venv again before running app
+                    . venv/bin/activate
+                    nohup python apps.py &
+                '''
             }
-      }
+        }
+
+        stage('Run Flask App in Docker') {
+            steps {
+                sh '''
+                    docker stop flask-app || true
+                    docker rm flask-app || true
+                    docker build -t devops-demo:latest .
+                    docker run -d -p 50000:50000 --name flask-app devops-demo:latest
+                '''
+            }
+        }
     }
 }
