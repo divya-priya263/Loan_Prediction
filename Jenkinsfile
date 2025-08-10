@@ -39,8 +39,8 @@ pipeline {
         stage('Running the flask app') {
               steps {
 
-                  sh ' pip install flask3.1.0'
-                  sh ' pip install Flask-SQLAlchemy3.1.1'
+                  sh ' pip install --user flask==3.1.0'
+                  sh ' pip install --user Flask-SQLAlchemy==3.1.1'
                   sh 'nohup python apps.py &'
             }
         }
