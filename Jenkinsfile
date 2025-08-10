@@ -2,6 +2,7 @@ pipeline {
     agent {
         docker {
             image 'python:3.11.2'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
 
@@ -37,7 +38,8 @@ pipeline {
         stage('Setup Python and Install Flask') {
             steps {
                 sh '''
-               
+                 
+
                     # Create virtual environment in workspace
                     python3 -m venv venv
 
@@ -54,6 +56,15 @@ pipeline {
                     # Activate venv again before running app
                     . venv/bin/activate
                     nohup python apps.py &
+                '''
+            }
+        }
+
+        stage('Install Docker in Container') {
+            steps {
+                sh '''
+                
+                    apt-get install -y docker.io
                 '''
             }
         }
