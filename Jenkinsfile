@@ -38,7 +38,8 @@ pipeline {
             
         stage('Running the flask app') {
               steps {
-                
+
+                  sh ' pip install flask'
                   sh 'nohup python apps.py &'
             }
         }
