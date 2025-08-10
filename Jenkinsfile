@@ -38,7 +38,7 @@ pipeline {
             
         stage('Running the flask app') {
               steps {
-                  sh 'pip install -r requirements.txt'
+                
                   sh 'nohup python apps.py &'
             }
         }
